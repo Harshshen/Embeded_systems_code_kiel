@@ -1,0 +1,11 @@
+1 ORG 0000H            // assembler directive
+2 MOV R0, #09H         // set a counter of 9 iterations in RO
+3 MOV DPTR, #3000H      // move address 3000H in DPTR 
+4 MOVX A, @DPTR // move data in DPTR to A
+5 MOV R1, A                    // A -> RI
+6 L1: INC DPTR                  // Label for jump at DPTR = DPTR + 1
+7 MOVX A, @DPTR           // A <- DPTR
+8 ADD A, R1                     // A+ R1
+9 MOV R1, A                   // A -> R1
+10 DJNZ R0, L1             // decrement content of RG by 1 and jump to label
+11 END                         // end
