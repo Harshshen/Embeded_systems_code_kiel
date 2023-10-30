@@ -1,0 +1,43 @@
+ORG 0000H
+	SJMP START
+	ORG 0035H
+		START: MOV TMOD, #01H
+		       MOV P2,#00H
+			   REPEAT: MOV P2,#
+			   ACALL DELAY
+			   MOV P2,#
+			   ACALL DELAY
+			   MOV P2,#
+			   ACALL DELAY
+			   MOV P2,#
+			   ACALL DELAY
+			   MOV P2,#
+			   ACALL DELAY
+			   MOV P2,#
+			   ACALL DELAY
+			   MOV P2,#
+			   ACALL DELAY
+			   MOV P2,#
+			   ACALL DELAY
+			   MOV P2,#
+			   ACALL DELAY
+			   MOV P2,#
+			   ACALL DELAY
+			   MOV P2,#
+			   ACALL DELAY
+			   MOV P2,#
+			   ACALL DELAY
+			   JMP REPEAT
+			   
+			   DELAY:MOV R0,#20H
+			   BACK: MOV TH0,#03CH
+					 MOV TL0,#0B0H
+					 SETB TR0
+					 CHECK:JNB TF0,CHECK
+					 CLR TF0
+					 CLR TR0
+					 DJNZ R0 , BACK
+					 RET
+					 
+END
+			   
