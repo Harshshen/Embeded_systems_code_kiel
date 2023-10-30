@@ -1,0 +1,19 @@
+ORG 0000H. //START
+CLR P1.2
+MOV TMOD, #10H //SETTING TMOD
+ON: MOV TH1, #0FEH
+        MOV TL1, #0ABH
+        CPL P1.2
+        SETB TR0 //STARTING TIMER
+        CHECK1: JNB TF1, CHECK1 //CHECKING TIMER 
+                         CLR TR1
+                         CLR TF1 //CLEARING 
+OFF: MOV TH1, #0FFH // SETTING INPUT FOR OFF CYCLE
+          MOV TL1, #75H
+          CPL P1.2
+          SETB TR0 //STARTING TIMER
+          CHECK2: JNB TF1, CHECK
+                           CLR TR1
+                           CLR TF1
+JMP ON
+END
