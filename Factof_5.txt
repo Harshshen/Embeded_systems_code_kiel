@@ -1,0 +1,13 @@
+ORG 0000H                  // starting from 0000h
+MAIN:                      // main subroutine
+MOV R0, #05                //moving 05 in the r0 register
+MOV A, R0                  //moving r0 data in accumulator
+LCALL FACT                 // calling subroutine fact
+SJMP $                    // short jump 
+FACT: CJNE R0, #01, loop //comparing r0 and 1
+RET                               
+loop: DEC R0              // decrease r0
+MOV B, R0                 // moving r0 data in b
+MUL AB                    //multiplying data of a and b
+LJMP FACT                 // long jump to fact 
+END                       // Ending the program 
