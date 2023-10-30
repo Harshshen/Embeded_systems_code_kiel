@@ -1,0 +1,11 @@
+1 ORG 0000H                       ;Starting address is given to the compiler as 0000H.
+2 MOV DPTR, #0100H          ;Store the data from the memory location to the Data  pointer  
+3 MOVX A, @DPTR      ; Move the data from the Data pointer to the Accumulator.
+4 MOV R0, A                   ;Move the contents of the Accumulator to register RO.
+5 INC DPTR                   ;Increment the Data pointer.
+6 MOV DPTR, #0101H
+7 MOVX A, @DPTR     ;Move the data from the Data pointer to the Accumulator.
+8 ADD A, R0                ;Contents of the accumulator and register RO are added.
+9 INC DPTR                ;Increment the Data pointer.
+10 MOVX @DPTR, A ;Move the contents of the Accumulator to the Data pointer.
+11 END                      ;Completion of the code.
