@@ -1,0 +1,14 @@
+ORG 0000H						//STARTING FROM 0000H
+SJMP START						//TO START LABEL
+ORG 0035H                                                         //START LABEL STARTING
+	START: CLR P1.2                                      //DECLARING P1.2 AS O/P
+                        MOV TMOD, #01H                  //DECLARING MODE 1 TIMER 1
+	              REPEAT: MOV TH0 , #0FFH   //MOVING FF FOR COUNT
+	                             MOV TL0,  #06H     //MOVING 06 FOR COUNT
+		                 CPL P1.2               // COMPLEMENTING P1.2 FOR OFF
+			     SETB TR0               // SETTING BIT TR0 TO 1
+                        CHECK:  JNB TF0, CHECK     //CHECKING TF0
+		                 CLR TR0                  // CLEARING TR0
+			      CLR TF0                   //CLEARING TF0
+			      JMP REPEAT           //REPEATING WHOLE WAVE 
+   END
